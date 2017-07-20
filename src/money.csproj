@@ -3,7 +3,7 @@
     <TargetFramework>netstandard1.4</TargetFramework>
     <AssemblyName>AndreMarcondesTeixeira.Money</AssemblyName>
     <Title>AndreMarcondesTeixeira.Money</Title>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>2.0.0</PackageVersion>
     <AssemblyCompany>andremteixeira</AssemblyCompany>
     <AssemblyDescription>A simple cross-platform money struct.</AssemblyDescription>
     <RootNamespace>AndreMarcondesTeixeira</RootNamespace>
@@ -17,9 +17,9 @@
     <RepositoryUrl>https://github.com/andremarcondesteixeira/money/</RepositoryUrl>
     <PackageTags>money;finance;netstandard1.4</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
-    <Version>1.0.0</Version>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.0.0</Version>
     <PackageProjectUrl>https://andremarcondesteixeira.github.io/money/</PackageProjectUrl>
     <PackageLicenseUrl>https://raw.githubusercontent.com/andremarcondesteixeira/money/master/LICENSE</PackageLicenseUrl>
     <PackageReleaseNotes>First stable release.</PackageReleaseNotes>
