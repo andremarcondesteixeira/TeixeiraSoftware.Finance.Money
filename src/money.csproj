@@ -5,14 +5,14 @@
     <Title>AndreMarcondesTeixeira.Money</Title>
     <PackageVersion>2.0.0</PackageVersion>
     <AssemblyCompany>andremteixeira</AssemblyCompany>
-    <AssemblyDescription>A simple cross-platform money struct.</AssemblyDescription>
+    <AssemblyDescription>A simple cross-platform money class.</AssemblyDescription>
     <RootNamespace>AndreMarcondesTeixeira</RootNamespace>
     <ApplicationIcon />
     <Win32Resource />
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>andremteixeira</Authors>
     <Company>André Marcondes Teixeira</Company>
-    <Description>A simple cross platform money struct.</Description>
+    <Description>A simple cross platform money class.</Description>
     <Copyright>André Marcondes Teixeira</Copyright>
     <RepositoryUrl>https://github.com/andremarcondesteixeira/money/</RepositoryUrl>
     <PackageTags>money;finance;netstandard1.4</PackageTags>
