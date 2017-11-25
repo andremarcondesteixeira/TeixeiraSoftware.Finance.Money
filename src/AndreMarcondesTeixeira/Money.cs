@@ -2,7 +2,7 @@ using System;
 
 namespace AndreMarcondesTeixeira
 {
-    public partial class Money
+    public partial struct Money
     {
         public readonly decimal Amount;
         public readonly Currency Currency;

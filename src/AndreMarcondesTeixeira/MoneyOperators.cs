@@ -2,7 +2,7 @@ using System;
 
 namespace AndreMarcondesTeixeira
 {
-    public partial class Money
+    public partial struct Money
     {
         public static Money operator + (Money a, Money b)
         {
