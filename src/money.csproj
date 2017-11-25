@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard1.4</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>AndreMarcondesTeixeira.Money</AssemblyName>
     <Title>AndreMarcondesTeixeira.Money</Title>
     <PackageVersion>2.0.0</PackageVersion>
