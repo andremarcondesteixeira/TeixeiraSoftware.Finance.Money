@@ -182,31 +182,42 @@ namespace AndreMarcondesTeixeira
         /// <summary>Performs comparison for sorting and ordering purposes</summary>
         /// <param name="obj">Any object</param>
         /// <returns>
-        ///     -1 if this current instance precedes the object specified by the
-        ///     CompareTo method in the sort order.
-        ///     0 if this current instance occurs in the same position in the sort
-        ///     order as the object specified by the CompareTo method.
-        ///     1 if this current instance follows the object specified by the CompareTo
-        ///     method in the sort order.
+        ///     -1 if this current instance is less than the paremeter.
+        ///     0 if this current instance have the same amount of money.
+        ///     1 if this current instance is greater than the parameter.
         /// </returns>
         public int CompareTo(object obj)
         {
-            throw new NotImplementedException();
+            if (obj is Money)
+            {
+                return this.CompareTo((Money) obj);
+            }
+
+            throw new ArgumentException(
+                "A Money instance can only be compared against another Money instance"
+            );
         }
 
         /// <summary>Performs comparison for sorting and ordering purposes</summary>
         /// <param name="other">A Money instance</param>
         /// <returns>
-        ///     -1 if this current instance precedes the object specified by the
-        ///     CompareTo method in the sort order.
-        ///     0 if this current instance occurs in the same position in the sort
-        ///     order as the object specified by the CompareTo method.
-        ///     1 if this current instance follows the object specified by the CompareTo
-        ///     method in the sort order.
+        ///     -1 if this current instance is less than the paremeter.
+        ///     0 if this current instance have the same amount of money.
+        ///     1 if this current instance is greater than the parameter.
         /// </returns>
         public int CompareTo(Money other)
         {
-            throw new NotImplementedException();
+            if (AreEquivalent(this, other))
+            {
+                return 0;
+            }
+
+            if (this > other)
+            {
+                return 1;
+            }
+
+            return -1;
         }
 
         private static bool AreEquivalent(Money a, Money b)
