@@ -2,93 +2,211 @@ using System;
 
 namespace AndreMarcondesTeixeira
 {
-    public partial struct Money
+    public partial struct Money : IComparable, IComparable<Money>, IEquatable<Money>
     {
-        public static Money operator + (Money a, Money b)
+        /// <summary>Addition operator</summary>
+        /// <param name="left">A Money instance</param>
+        /// <param name="right">A Money instance</param>
+        /// <returns>a new Money instance</returns>
+        public static Money operator + (Money left, Money right)
         {
-            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(a, b);
-            return new Money(a.Amount + b.Amount, a.Currency);
+            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(left, right);
+            return new Money(left.Amount + right.Amount, left.Currency);
         }
 
+        /// <summary>Unary plus operator</summary>
+        /// <param name="money">A Money instance</param>
+        /// <returns>a new Money instance</returns>
         public static Money operator + (Money money)
         {
             return new Money(money.Amount, money.Currency);
         }
 
-        public static Money operator - (Money a, Money b)
+        /// <summary>Subtraction operator</summary>
+        /// <param name="left">A Money instance</param>
+        /// <param name="right">A Money instance</param>
+        /// <returns>a new Money instance</returns>
+        public static Money operator - (Money left, Money right)
         {
-            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(a, b);
-            return new Money(a.Amount - b.Amount, a.Currency);
+            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(left, right);
+            return new Money(left.Amount - right.Amount, left.Currency);
         }
 
+        /// <summary>Unary minus operator</summary>
+        /// <param name="money">A Money instance</param>
+        /// <returns>a new Money instance</returns>
         public static Money operator - (Money money)
         {
             return new Money(money.Amount * (-1), money.Currency);
         }
 
+        /// <summary>Multiplication operator</summary>
+        /// <remarks>
+        ///     The multiplication operator only works against a factor, and was not
+        ///     implemented to work against another Money instance
+        /// </remarks>
+        /// <param name="money">A Money instance</param>
+        /// <param name="factor">A decimal factor</param>
+        /// <returns>A new Money instance</returns>
         public static Money operator * (Money money, decimal factor)
         {
             return new Money(money.Amount * factor, money.Currency);
         }
 
+        /// <summary>Multiplication operator</summary>
+        /// <remarks>
+        ///     The multiplication operator only works against a factor, and was not
+        ///     implemented to work against another Money instance
+        /// </remarks>
+        /// <param name="factor">A decimal factor</param>
+        /// <param name="money">A Money instance</param>
+        /// <returns>A new Money instance</returns>
         public static Money operator * (decimal factor, Money money)
         {
             return new Money(money.Amount * factor, money.Currency);
         }
 
+        /// <summary>Division operator</summary>
+        /// <remarks>
+        ///     The division operator only works against a factor, and was not
+        ///     implemented to work against another Money instance
+        /// </remarks>
+        /// <param name="money">A Money instance</param>
+        /// <param name="factor">A decimal factor</param>
+        /// <returns>A new Money instance</returns>
         public static Money operator / (Money money, decimal factor)
         {
             return new Money(money.Amount / factor, money.Currency);
         }
 
+        /// <summary>Division operator</summary>
+        /// <remarks>
+        ///     The division operator only works against a factor, and was not
+        ///     implemented to work against another Money instance
+        /// </remarks>
+        /// <param name="factor">A decimal factor</param>
+        /// <param name="money">A Money instance</param>
+        /// <returns>A new Money instance</returns>
         public static Money operator / (decimal factor, Money money)
         {
             return new Money(factor / money.Amount, money.Currency);
         }
 
-        public static bool operator == (Money a, Money b)
+        /// <summary>Equality comparison operator</summary>
+        /// <param name="left">A Money instance</param>
+        /// <param name="right">A Money instance</param>
+        /// <returns>True or false</returns>
+        public static bool operator == (Money left, Money right)
         {
-            return AreEquivalent(a, b);
+            return AreEquivalent(left, right);
         }
 
-        public static bool operator != (Money a, Money b)
+        /// <summary>Inequality comparison operator</summary>
+        /// <param name="left">A Money instance</param>
+        /// <param name="right">A Money instance</param>
+        /// <returns>True or false</returns>
+        public static bool operator != (Money left, Money right)
         {
-            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(a, b);
-            return a.Currency != b.Currency || a.Amount != b.Amount;
+            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(left, right);
+            return left.Currency != right.Currency || left.Amount != right.Amount;
         }
 
-        public static bool operator > (Money a, Money b)
+        /// <summary>"Greater than" comparison operator</summary>
+        /// <param name="left">A Money instance</param>
+        /// <param name="right">A Money instance</param>
+        /// <returns>True or false</returns>
+        public static bool operator > (Money left, Money right)
         {
-            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(a, b);
-            return a.Amount > b.Amount;
+            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(left, right);
+            return left.Amount > right.Amount;
         }
 
-        public static bool operator < (Money a, Money b)
+        /// <summary>"Less than" comparison operator</summary>
+        /// <param name="left">A Money instance</param>
+        /// <param name="right">A Money instance</param>
+        /// <returns>True or false</returns>
+        public static bool operator < (Money left, Money right)
         {
-            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(a, b);
-            return a.Amount < b.Amount;
+            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(left, right);
+            return left.Amount < right.Amount;
         }
 
-        public static bool operator >= (Money a, Money b)
+        /// <summary>"Greater than or equal to" comparison operator</summary>
+        /// <param name="left">A Money instance</param>
+        /// <param name="right">A Money instance</param>
+        /// <returns>True or false</returns>
+        public static bool operator >= (Money left, Money right)
         {
-            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(a, b);
-            return a.Amount >= b.Amount;
+            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(left, right);
+            return left.Amount >= right.Amount;
         }
 
-        public static bool operator <= (Money a, Money b)
+        /// <summary>"Less then or equal to" comparison operator</summary>
+        /// <param name="left">A Money instance</param>
+        /// <param name="right">A Money instance</param>
+        /// <returns>True or false</returns>
+        public static bool operator <= (Money left, Money right)
         {
-            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(a, b);
-            return a.Amount <= b.Amount;
+            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(left, right);
+            return left.Amount <= right.Amount;
         }
 
+        /// <summary>The Hash Code from Object</summary>
+        /// <returns>The Hash Code from Object</returns>
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
 
+        /// <summary>Performs equality check</summary>
+        /// <param name="obj">Any object</param>
+        /// <returns>True or false</returns>
         public override bool Equals(object obj)
         {
-            return AreEquivalent(this, (Money) obj);
+            if (obj is Money)
+            {
+                return AreEquivalent(this, (Money) obj);
+            }
+
+            return false;
+        }
+
+        /// <summary>Performs equality check<summary>
+        /// <param name="other">A Money instance</param>
+        /// <returns>True or false</returns>
+        public bool Equals(Money other)
+        {
+            return AreEquivalent(this, other);
+        }
+
+        /// <summary>Performs comparison for sorting and ordering purposes</summary>
+        /// <param name="obj">Any object</param>
+        /// <returns>
+        ///     -1 if this current instance precedes the object specified by the
+        ///     CompareTo method in the sort order.
+        ///     0 if this current instance occurs in the same position in the sort
+        ///     order as the object specified by the CompareTo method.
+        ///     1 if this current instance follows the object specified by the CompareTo
+        ///     method in the sort order.
+        /// </returns>
+        public int CompareTo(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>Performs comparison for sorting and ordering purposes</summary>
+        /// <param name="other">A Money instance</param>
+        /// <returns>
+        ///     -1 if this current instance precedes the object specified by the
+        ///     CompareTo method in the sort order.
+        ///     0 if this current instance occurs in the same position in the sort
+        ///     order as the object specified by the CompareTo method.
+        ///     1 if this current instance follows the object specified by the CompareTo
+        ///     method in the sort order.
+        /// </returns>
+        public int CompareTo(Money other)
+        {
+            throw new NotImplementedException();
         }
 
         private static bool AreEquivalent(Money a, Money b)
