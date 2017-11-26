@@ -171,7 +171,7 @@ namespace AndreMarcondesTeixeira
             return false;
         }
 
-        /// <summary>Performs equality check<summary>
+        /// <summary>Performs equality check</summary>
         /// <param name="other">A Money instance</param>
         /// <returns>True or false</returns>
         public bool Equals(Money other)
