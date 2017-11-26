@@ -2,3 +2,5 @@ obj/
 bin/
 .vscode/
 .vs/
+src/Properties/
+src/money.csproj.user
