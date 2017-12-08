@@ -1,6 +1,6 @@
 using System;
 
-namespace AndreMarcondesTeixeira
+namespace TeixeiraSoftware.Finance
 {
     /// <summary>A money representation based on Martin Fowler's Money pattern</summary>
     public partial struct Money : IComparable, IComparable<Money>, IEquatable<Money>

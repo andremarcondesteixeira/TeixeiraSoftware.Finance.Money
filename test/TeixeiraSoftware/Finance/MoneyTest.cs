@@ -2,7 +2,7 @@ using Xunit;
 using System;
 using System.Collections.Generic;
 
-namespace AndreMarcondesTeixeira
+namespace TeixeiraSoftware.Finance
 {
     public class MoneyTest
     {

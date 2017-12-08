@@ -1,38 +1,38 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>AndreMarcondesTeixeira.Money</AssemblyName>
-    <Title>AndreMarcondesTeixeira.Money</Title>
-    <PackageVersion>2.0.0</PackageVersion>
-    <AssemblyCompany>andremteixeira</AssemblyCompany>
-    <AssemblyDescription>A simple cross-platform money class.</AssemblyDescription>
-    <RootNamespace>AndreMarcondesTeixeira</RootNamespace>
+    <AssemblyName>TeixeiraSoftware.Finance.Money</AssemblyName>
+    <Title>TeixeiraSoftware.Finance.Money</Title>
+    <PackageVersion>1.0.0</PackageVersion>
+    <AssemblyCompany>Teixeira Software</AssemblyCompany>
+    <AssemblyDescription>A simple cross-platform money class-library.</AssemblyDescription>
+    <RootNamespace>TeixeiraSoftware</RootNamespace>
     <ApplicationIcon />
     <Win32Resource />
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>andremteixeira</Authors>
-    <Company>André Marcondes Teixeira</Company>
-    <Description>A simple cross platform money class.</Description>
-    <Copyright>André Marcondes Teixeira</Copyright>
-    <RepositoryUrl>https://github.com/andremarcondesteixeira/money/</RepositoryUrl>
-    <PackageTags>money;finance;netstandard1.4</PackageTags>
+    <Company>Teixeira Software</Company>
+    <Description>A simple cross platform money class-library.</Description>
+    <Copyright>Teixeira Software</Copyright>
+    <RepositoryUrl>https://github.com/TeixeiraSoftware/Money</RepositoryUrl>
+    <PackageTags>money;finance;netstandard</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
-    <Version>2.0.0</Version>
-    <PackageProjectUrl>https://andremarcondesteixeira.github.io/money/</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/andremarcondesteixeira/money/master/LICENSE</PackageLicenseUrl>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.0</Version>
+    <PackageProjectUrl>https://TeixeiraSoftware.github.io/Money</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/TeixeiraSoftware/Money/master/LICENSE</PackageLicenseUrl>
     <PackageReleaseNotes>First stable release.</PackageReleaseNotes>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <Optimize>False</Optimize>
-    <DocumentationFile>bin\Debug\netstandard1.4\AndreMarcondesTeixeira.Money.xml</DocumentationFile>
+    <Optimize>True</Optimize>
+    <DocumentationFile>bin\Debug\netstandard2.0\TeixeiraSoftware.Finance.Money.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard1.4\AndreMarcondesTeixeira.Money.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard2.0\TeixeiraSoftware.Finance.Money.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="currency" Version="3.*" />
+    <PackageReference Include="TeixeiraSoftware.Finance.Currency" Version="1.*" />
     <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.*" />
   </ItemGroup>
 </Project>

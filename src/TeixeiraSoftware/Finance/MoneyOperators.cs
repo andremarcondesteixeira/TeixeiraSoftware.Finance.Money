@@ -1,6 +1,6 @@
 using System;
 
-namespace AndreMarcondesTeixeira
+namespace TeixeiraSoftware.Finance
 {
     public partial struct Money : IComparable, IComparable<Money>, IEquatable<Money>
     {
