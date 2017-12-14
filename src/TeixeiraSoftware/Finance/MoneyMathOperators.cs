@@ -63,7 +63,7 @@ namespace TeixeiraSoftware.Finance
         /// <returns>A new Money instance</returns>
         public static Money operator * (decimal factor, Money money)
         {
-            return new Money(money.Amount * factor, money.Currency);
+            return money * factor;
         }
 
         /// <summary>Division operator</summary>
@@ -77,19 +77,6 @@ namespace TeixeiraSoftware.Finance
         public static Money operator / (Money money, decimal factor)
         {
             return new Money(money.Amount / factor, money.Currency);
-        }
-
-        /// <summary>Division operator</summary>
-        /// <remarks>
-        ///     The division operator only works against a factor, and was not
-        ///     implemented to work against another Money instance
-        /// </remarks>
-        /// <param name="factor">A decimal factor</param>
-        /// <param name="money">A Money instance</param>
-        /// <returns>A new Money instance</returns>
-        public static Money operator / (decimal factor, Money money)
-        {
-            return new Money(factor / money.Amount, money.Currency);
         }
     }
 }

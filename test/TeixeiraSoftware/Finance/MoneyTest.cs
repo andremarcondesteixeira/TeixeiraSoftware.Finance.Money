@@ -26,7 +26,6 @@ namespace TeixeiraSoftware.Finance
             Assert.Equal(20.0m, (TenXXX * 2.0m).Amount);
             Assert.Equal(30.0m, (3.0m * TenXXX).Amount);
             Assert.Equal(5.0m, (TenXXX / 2.0m).Amount);
-            Assert.Equal(0.2m, (2.0m / TenXXX).Amount);
         }
 
         [Fact]
