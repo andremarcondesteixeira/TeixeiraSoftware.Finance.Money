@@ -35,7 +35,7 @@ var tenMoneys = new Money(12.3m, Currency.XXX);
 var aMillionMoneys = new Money(1000000, Currency.GetByLetterCode("XXX"));
 ```
 
-It is possible to get Currency instances by various ways. See the[TeixeiraSoftware.Finance.Currency](https://TeixeiraSoftware.github.io/TeixeiraSoftware.Finance.Currency/) package documentation for more info.
+It is possible to get Currency instances by various ways. See the [TeixeiraSoftware.Finance.Currency](https://TeixeiraSoftware.github.io/TeixeiraSoftware.Finance.Currency/) package documentation for more info.
 
 You can do math operations:
 

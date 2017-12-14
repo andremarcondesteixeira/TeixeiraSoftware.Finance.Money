@@ -16,7 +16,7 @@ namespace TeixeiraSoftware.Finance
         ///     comparisons between instances with different currencies. Defaults
         ///     to false. When it is set to true, any comparisons against different
         ///     currencies will return false. When set to false, any try to compare
-        ///     instances with different currencies will throw a MoneyMismatchException
+        ///     instances with different currencies will throw a CurrencyMismatchException
         /// </summary>
         public static bool StrictEqualityComparisons { get; set; } = false;
 
