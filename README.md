@@ -32,7 +32,7 @@ Then, just start using it:
 ``` c#
 // XXX represents the ISO 4217 code of the currency
 var tenMoneys = new Money(12.3m, Currency.XXX);
-var aMillionMoneys new Moneys(1000000, Currency.GetByLetterCode("XXX"));
+var aMillionMoneys = new Money(1000000, Currency.GetByLetterCode("XXX"));
 ```
 
 It is possible to get Currency instances by various ways. See the[TeixeiraSoftware.Finance.Currency](https://TeixeiraSoftware.github.io/TeixeiraSoftware.Finance.Currency/) package documentation for more info.
@@ -56,6 +56,7 @@ var sevenMoneys = eightMoneys - oneMoney;
 
 // operator /
 var wowSuchMoney = aThousandMoneys / 2;
+// you cannot divide any number to a Money instance, like 2 / oneMoney, because it makes no sense at all
 
 // operator *
 var muchCoins = aThousandMoneys * 2;
@@ -64,7 +65,7 @@ var veryValuable = 1000 * aThousandMoneys;
 
 And you can compare money! How incredible is that? :p
 
-The available operators are: ==, !=, >, >=, < and <=. And the .Equals method is also available.
+The available operators are: `==`, `!=`, `>`, `>=`, `<` and `<=`. And the `.Equals` method is also available.
 
 ``` c#
 if (aThousandMoneys == muchCoins)
@@ -88,6 +89,47 @@ if (muchCoins > veryValuable)
 }
 
 // and so on, you got it :D
+```
+
+You may pay attention when trying to use the operators when the currencies don't match.
+the operators `>`, `>=`, `<` and `<=` will throw a `CurrencyMismatchException` if the currencies are not the same:
+
+``` c#
+var tenXXX = new Money(10, Currency.XXX);
+var tenXTS = new Money(10, Currency.XTS);
+
+if (tenXXX > tenXTS) // throws CurrencyMismatchException
+```
+
+However, you can perform an equality comparison beetween instances with differente currencies, although in this case you will always obtain `false`:
+
+``` c#
+var tenXXX = new Money(10, Currency.XXX);
+var tenXTS = new Money(10, Currency.XTS);
+
+if (tenXXX == tenXTS)
+{
+    // code in this block will never be executed
+}
+
+if (tenXXX.Equals(tenXTS))
+{
+    // code in this block will never be executed
+}
+```
+
+If you don't like this behavior, you can change it by setting `StrictEqualityComparisons` to `true`.
+When doing so, any try to compare the equality between instances with different currencies will result in a `CurrencyMismatchException` being thrown:
+
+``` c#
+Money.StrictEqualityComparisons = true;
+
+var tenXXX = new Money(10, Currency.XXX);
+var tenXTS = new Money(10, Currency.XTS);
+
+if (tenXXX == tenXTS) // throws CurrencyMismatchException
+
+if (tenXXX.Equals(tenXTS)) // throws CurrencyMismatchException
 ```
 
 ### Contributing
