@@ -14,6 +14,24 @@ namespace TeixeiraSoftware.Finance
             return new Money(left.Amount + right.Amount, left.Currency);
         }
 
+        /// <summary>Addition operator</summary>
+        /// <param name="left">A Money instance</param>
+        /// <param name="right">A decimal value</param>
+        /// <returns>a new Money instance</returns>
+        public static Money operator + (Money left, decimal right)
+        {
+            return left + new Money(right, left.Currency);
+        }
+
+        /// <summary>Addition operator</summary>
+        /// <param name="left">A decimal value</param>
+        /// <param name="right">A Money instance</param>
+        /// <returns>a new Money instance</returns>
+        public static Money operator + (decimal left, Money right)
+        {
+            return right + left;
+        }
+
         /// <summary>Unary plus operator</summary>
         /// <param name="money">A Money instance</param>
         /// <returns>a new Money instance</returns>
@@ -30,6 +48,24 @@ namespace TeixeiraSoftware.Finance
         {
             ThrowArgumentExceptionIfCurrenciesAreNotTheSame(left, right);
             return new Money(left.Amount - right.Amount, left.Currency);
+        }
+
+        /// <summary>Subtraction operator</summary>
+        /// <param name="left">A Money instance</param>
+        /// <param name="right">A decimal value</param>
+        /// <returns>a new Money instance</returns>
+        public static Money operator - (Money left, decimal right)
+        {
+            return left - new Money(right, left.Currency);
+        }
+
+        /// <summary>Subtraction operator</summary>
+        /// <param name="left">A decimal value</param>
+        /// <param name="right">A Money instance</param>
+        /// <returns>a new Money instance</returns>
+        public static Money operator - (decimal left, Money right)
+        {
+            return right - left;
         }
 
         /// <summary>Unary minus operator</summary>
