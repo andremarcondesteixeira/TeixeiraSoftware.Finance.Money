@@ -21,8 +21,12 @@ namespace TeixeiraSoftware.Finance
         {
             Assert.Equal(20.0m, (TenXXX + TenXXX).Amount);
             Assert.Equal(10.0m, +TenXXX.Amount);
+            Assert.Equal(11.5m, (TenXXX + 1.5m).Amount);
+            Assert.Equal(11, (1 + TenXXX).Amount);
             Assert.Equal(0.0m, (TenXXX - TenXXX).Amount);
             Assert.Equal(-10.0m, -TenXXX.Amount);
+            Assert.Equal(9, (TenXXX - 1).Amount);
+            Assert.Equal(9.5m, (0.5m - TenXXX).Amount);
             Assert.Equal(20.0m, (TenXXX * 2.0m).Amount);
             Assert.Equal(30.0m, (3.0m * TenXXX).Amount);
             Assert.Equal(5.0m, (TenXXX / 2.0m).Amount);
