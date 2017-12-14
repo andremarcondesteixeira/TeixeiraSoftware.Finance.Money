@@ -1,3 +1,5 @@
+[![TeixeiraSoftware.Finance.Money](https://github.com/TeixeiraSoftware/assets/blob/master/logo_v1.png)](https://TeixeiraSoftware.github.io/Currency/)
+
 # TeixeiraSoftware.Finance.Money [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=A%20simple%20money%20class%20library&url=https://TeixeiraSoftware.github.io/TeixeiraSoftware.Finance.Money/&hashtags=money,finance,software,dotnet,crossplatform)
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/TeixeiraSoftware/TeixeiraSoftware.Finance.Money/blob/master/LICENSE)
