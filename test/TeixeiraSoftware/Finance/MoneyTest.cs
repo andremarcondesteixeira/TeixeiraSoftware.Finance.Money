@@ -7,14 +7,17 @@ namespace TeixeiraSoftware.Finance
     public class MoneyTest
     {
         private Money TenXXX;
+        private Money TenXTS;
 
         public MoneyTest()
         {
             this.TenXXX = new Money(10.0m, Currency.XXX);
+            this.TenXTS = new Money(10.0m, Currency.XTS);
+            Money.StrictEqualityComparisons = false;
         }
 
         [Fact]
-        public void Money_Intances_Are_Compatible_With_Math_Operators()
+        public void Math_Operators()
         {
             Assert.Equal(20.0m, (TenXXX + TenXXX).Amount);
             Assert.Equal(10.0m, +TenXXX.Amount);
@@ -27,25 +30,48 @@ namespace TeixeiraSoftware.Finance
         }
 
         [Fact]
-        public void Money_Intances_Are_Compatible_With_Comparison_Operators()
+        public void Comparison_Operators()
         {
-            var anotherTenXTS = new Money(10.0m, Currency.XTS);
-            var twentyXTS = new Money(20.0m, Currency.XTS);
+            var anotherTenXXX = new Money(10.0m, Currency.XXX);
+            var twentyXXX = new Money(20.0m, Currency.XXX);
 
-            Assert.True(TenXXX == anotherTenXTS);
-            Assert.False(TenXXX == twentyXTS);
-            Assert.True(TenXXX != twentyXTS);
-            Assert.False(TenXXX != anotherTenXTS);
-            Assert.True(TenXXX.Equals(anotherTenXTS));
-            Assert.False(TenXXX.Equals(twentyXTS));
-            Assert.True(TenXXX < twentyXTS);
-            Assert.False(twentyXTS < TenXXX);
-            Assert.True(twentyXTS > TenXXX);
-            Assert.False(TenXXX > twentyXTS);
-            Assert.True(TenXXX <= anotherTenXTS);
-            Assert.False(twentyXTS <= TenXXX);
-            Assert.True(TenXXX >= anotherTenXTS);
-            Assert.False(TenXXX >= twentyXTS);
+            // operator ==
+            Assert.True(TenXXX == anotherTenXXX);
+            Assert.False(TenXXX == TenXTS);
+            Assert.False(TenXXX == twentyXXX);
+            Assert.False(TenXTS == twentyXXX);
+
+            // operator !=
+            Assert.False(TenXXX != anotherTenXXX);
+            Assert.True(TenXXX != TenXTS);
+            Assert.True(TenXXX != twentyXXX);
+            Assert.True(TenXTS != twentyXXX);
+            
+            // Equals method
+            Assert.True(TenXXX.Equals(anotherTenXXX));
+            Assert.True(TenXXX.Equals((object) anotherTenXXX));
+            Assert.False(TenXXX.Equals(TenXTS));
+            Assert.False(TenXXX.Equals((object) TenXTS));
+            Assert.False(TenXXX.Equals(twentyXXX));
+            Assert.False(TenXXX.Equals((object) twentyXXX));
+            Assert.False(TenXTS.Equals(twentyXXX));
+            Assert.False(TenXTS.Equals((object) twentyXXX));
+            
+            // operator <
+            Assert.True(TenXXX < twentyXXX);
+            Assert.False(twentyXXX < TenXXX);
+            
+            // operator <=
+            Assert.True(TenXXX <= anotherTenXXX);
+            Assert.False(twentyXXX <= TenXXX);
+            
+            //operator >
+            Assert.True(twentyXXX > TenXXX);
+            Assert.False(TenXXX > twentyXXX);
+            
+            // operator >=
+            Assert.True(TenXXX >= anotherTenXXX);
+            Assert.False(TenXXX >= twentyXXX);
         }
 
         [Fact]
@@ -67,37 +93,52 @@ namespace TeixeiraSoftware.Finance
         }
 
         [Fact]
-        public void Money_Instances_Cannot_Use_Operators_When_Currencies_Are_Different()
+        public void Cannot_Perform_Math_Operations_If_Currencies_Are_Different()
         {
-            var tenXXX = new Money(10.0m, Currency.XXX);
             var message = "Currencies must be the same";
 
-            var exception1 = Assert.Throws<ArgumentException>(() => TenXXX + tenXXX);
+            var exception1 = Assert.Throws<ArgumentException>(() => TenXXX + TenXTS);
             Assert.Equal(message, exception1.Message);
 
-            var exception2 = Assert.Throws<ArgumentException>(() => TenXXX - tenXXX);
+            var exception2 = Assert.Throws<ArgumentException>(() => TenXXX - TenXTS);
+            Assert.Equal(message, exception2.Message);
+        }
+
+        [Fact]
+        public void Cannot_Do_Some_Comparisons_If_Currencies_Are_Different()
+        {
+            var message = "Currencies must be the same";
+
+            var exception1 = Assert.Throws<ArgumentException>(() => TenXXX > TenXTS);
+            Assert.Equal(message, exception1.Message);
+
+            var exception2 = Assert.Throws<ArgumentException>(() => TenXXX < TenXTS);
             Assert.Equal(message, exception2.Message);
 
-            var exception3 = Assert.Throws<ArgumentException>(() => TenXXX == tenXXX);
+            var exception3 = Assert.Throws<ArgumentException>(() => TenXXX >= TenXTS);
             Assert.Equal(message, exception3.Message);
 
-            var exception4 = Assert.Throws<ArgumentException>(() => TenXXX.Equals(tenXXX));
+            var exception4 = Assert.Throws<ArgumentException>(() => TenXXX <= TenXTS);
             Assert.Equal(message, exception4.Message);
+        }
 
-            var exception5 = Assert.Throws<ArgumentException>(() => TenXXX != tenXXX);
-            Assert.Equal(message, exception5.Message);
+        [Fact]
+        public void Cannot_Do_Equality_Comparison_If_Currencies_Are_Different_And_StrictEqualityComparisons_Is_True()
+        {
+            var message = "Currencies must be the same";
+            Money.StrictEqualityComparisons = true;
 
-            var exception6 = Assert.Throws<ArgumentException>(() => TenXXX > tenXXX);
-            Assert.Equal(message, exception6.Message);
+            var exception1 = Assert.Throws<ArgumentException>(() => TenXXX == TenXTS);
+            Assert.Equal(message, exception1.Message);
 
-            var exception7 = Assert.Throws<ArgumentException>(() => TenXXX < tenXXX);
-            Assert.Equal(message, exception7.Message);
+            var exception2 = Assert.Throws<ArgumentException>(() => TenXXX.Equals(TenXTS));
+            Assert.Equal(message, exception2.Message);
 
-            var exception8 = Assert.Throws<ArgumentException>(() => TenXXX >= tenXXX);
-            Assert.Equal(message, exception8.Message);
+            var exception3 = Assert.Throws<ArgumentException>(() => TenXXX.Equals((object) TenXTS));
+            Assert.Equal(message, exception3.Message);
 
-            var exception9 = Assert.Throws<ArgumentException>(() => TenXXX <= tenXXX);
-            Assert.Equal(message, exception9.Message);
+            var exception4 = Assert.Throws<ArgumentException>(() => TenXXX != TenXTS);
+            Assert.Equal(message, exception4.Message);
         }
 
         [Fact]
