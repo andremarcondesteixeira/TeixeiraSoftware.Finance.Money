@@ -1,4 +1,4 @@
-[![TeixeiraSoftware.Finance.Money](https://github.com/TeixeiraSoftware/assets/blob/master/logo_v1.png)](https://TeixeiraSoftware.github.io/Currency/)
+[![TeixeiraSoftware.Finance.Money](https://github.com/TeixeiraSoftware/assets/raw/master/logo_v1.png)](https://TeixeiraSoftware.github.io/TeixeiraSoftware.Finance.Money/)
 
 # TeixeiraSoftware.Finance.Money [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=A%20simple%20money%20class%20library&url=https://TeixeiraSoftware.github.io/TeixeiraSoftware.Finance.Money/&hashtags=money,finance,software,dotnet,crossplatform)
 
@@ -58,7 +58,8 @@ var sevenMoneys = eightMoneys - oneMoney;
 
 // operator /
 var wowSuchMoney = aThousandMoneys / 2;
-// you cannot divide any number to a Money instance, like 2 / oneMoney, because it makes no sense at all
+// you cannot divide any number to a Money instance, like
+// `2 / new Money(10, Currency.XXX)`, because it makes no sense at all
 
 // operator *
 var muchCoins = aThousandMoneys * 2;
