@@ -73,6 +73,11 @@ How incredible is that? :p
 The available operators are: `==`, `!=`, `>`, `>=`, `<` and `<=`. And the `.Equals` method is also available.
 
 ``` c#
+var aThousandMoneys = new Money(1000, Currency.XXX);
+var wowSuchMoney = new Money(42, Currency.XXX);
+var muchCoins = aThousandMoneys * 2;
+var veryValuable = 1000 * aThousandMoneys;
+
 if (aThousandMoneys == muchCoins)
 {
     // some fancy code here
