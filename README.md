@@ -21,7 +21,7 @@ Install-Package TeixeiraSoftware.Finance.Money
 
 ### Dependencies
 
-This package depends on `TeixeiraSoftware.Finance.Currency`, available [here](https://www.nuget.org/packages/TeixeiraSoftware.Finance.Money/) in nuget.org
+This package depends on `TeixeiraSoftware.Finance.Currency`, available [here](https://www.nuget.org/packages/TeixeiraSoftware.Finance.Currency/) in nuget.org
 
 ### Usage
 First of all, import the namespace, for convenience:
