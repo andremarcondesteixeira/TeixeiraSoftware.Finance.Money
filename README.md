@@ -12,18 +12,18 @@ The implementation of this library is compatible with .Net Standard 2.0 (see [ht
 
 TeixeiraSoftware.Finance.Money is a value type.
 
-### Installation
+## Installation
 
 Install through NuGet Package Manager:
 ```
 Install-Package TeixeiraSoftware.Finance.Money
 ```
 
-### Dependencies
+## Dependencies
 
 This package depends on `TeixeiraSoftware.Finance.Currency`, available [here](https://www.nuget.org/packages/TeixeiraSoftware.Finance.Currency/) in nuget.org
 
-### Usage
+## Usage
 First of all, import the namespace, for convenience:
 ``` c#
 using TeixeiraSoftware.Finance;
@@ -39,7 +39,7 @@ var aMillionMoneys = new Money(1000000, Currency.GetByLetterCode("XXX"));
 
 It is possible to get Currency instances by various ways. See the [TeixeiraSoftware.Finance.Currency](https://TeixeiraSoftware.github.io/TeixeiraSoftware.Finance.Currency/) package documentation for more info.
 
-You can do math operations:
+### Math operations:
 
 ``` c#
 // operator +
@@ -66,7 +66,9 @@ var muchCoins = aThousandMoneys * 2;
 var veryValuable = 1000 * aThousandMoneys;
 ```
 
-And you can compare money! How incredible is that? :p
+### Comparison operations
+
+How incredible is that? :p
 
 The available operators are: `==`, `!=`, `>`, `>=`, `<` and `<=`. And the `.Equals` method is also available.
 
@@ -93,6 +95,8 @@ if (muchCoins > veryValuable)
 
 // and so on, you got it :D
 ```
+
+### Details about operations involving different currencies
 
 You may pay attention when trying to use the operators when the currencies don't match.
 the operators `>`, `>=`, `<` and `<=` will throw a `CurrencyMismatchException` if the currencies are not the same:
