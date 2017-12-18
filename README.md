@@ -113,7 +113,7 @@ var tenXTS = new Money(10, Currency.XTS);
 if (tenXXX > tenXTS) // throws CurrencyMismatchException
 ```
 
-However, you can perform an equality comparison beetween instances with differente currencies, although in this case you will always obtain `false`:
+However, you can perform an equality comparison between instances with different currencies, although in this case you will always obtain `false`:
 
 ``` c#
 var tenXXX = new Money(10, Currency.XXX);
