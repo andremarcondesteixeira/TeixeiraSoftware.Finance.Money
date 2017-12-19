@@ -1,0 +1,16 @@
+Create:
+    - MoneyComparer
+
+Update documentation:
+    - Sorting
+    - CurrencyMismatchException
+    - StrictEqualityComparisons and Money.Equals(obj object)
+
+Update Unit Tests:
+    - CurrencyMismatchException
+    - Money.Equals(obj object) : "A Money instance can only be compared against another Money instance"
+    - Money.CompareTo(obj object) : "A Money instance can only be compared against another Money instance"
+
+Create code coverage reports
+Configure CodeCov
+Configure AppVeyor
