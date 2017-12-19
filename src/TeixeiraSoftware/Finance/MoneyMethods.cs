@@ -25,6 +25,13 @@ namespace TeixeiraSoftware.Finance
                 return this.Equals((Money) obj);
             }
 
+            if (StrictEqualityComparisons)
+            {
+                throw new ArgumentException(
+                    "A Money instance can only be compared against another Money instance"
+                );
+            }
+
             return false;
         }
 
@@ -52,6 +59,9 @@ namespace TeixeiraSoftware.Finance
         ///     0 if this current instance have the same amount of money.
         ///     1 if this current instance is greater than the parameter.
         /// </returns>
+        /// <exception cref="CurrencyMismatchException">
+        ///     Thrown when the currencies are not the same
+        /// </exception>
         public int CompareTo(object obj)
         {
             if (obj is Money)
@@ -71,6 +81,9 @@ namespace TeixeiraSoftware.Finance
         ///     0 if this current instance have the same amount of money.
         ///     1 if this current instance is greater than the parameter.
         /// </returns>
+        /// <exception cref="CurrencyMismatchException">
+        ///     Thrown when the currencies are not the same
+        /// </exception>
         public int CompareTo(Money other)
         {
             if (AreEquivalent(this, other))
