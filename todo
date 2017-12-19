@@ -1,5 +1,8 @@
 Create:
     - MoneyComparer
+    - Money.Clone() method?
+    - Serialization for Money
+    - Serialization for CurrencyMismatchException
 
 Update documentation:
     - Sorting
