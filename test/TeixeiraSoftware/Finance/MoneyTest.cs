@@ -164,8 +164,42 @@ namespace TeixeiraSoftware.Finance
         {
             var collection = new List<Money>
             {
-                new Money()
+                new Money(3, Currency.XXX),
+                new Money(1, Currency.XXX),
+                new Money(2, Currency.XXX)
             };
+
+            collection.Sort();
+
+            Assert.Equal(
+                collection,
+                new List<Money>
+                {
+                    new Money(1, Currency.XXX),
+                    new Money(2, Currency.XXX),
+                    new Money(3, Currency.XXX)
+                }
+            );
+        }
+
+        [Fact]
+        public void Cannot_Sort_Money_Collections_With_Different_Currencies()
+        {
+            var money1 = new Money(1, Currency.XTS);
+            var money2 = new Money(2, Currency.XXX);
+            var money3 = new Money(3, Currency.XXX);
+
+            var collection = new List<Money>
+            {
+                money3,
+                money1,
+                money2
+            };
+
+            var exception = Assert.Throws<InvalidOperationException>(() => collection.Sort());
+            Assert.Equal(CurrencyMismatchException.DefaultMessage, exception.InnerException.Message);
+            Assert.Equal(((CurrencyMismatchException) exception.InnerException).LeftOperand, money3);
+            Assert.Equal(((CurrencyMismatchException) exception.InnerException).RightOperand, money1);
         }
     }
 }
