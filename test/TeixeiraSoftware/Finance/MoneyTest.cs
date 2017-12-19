@@ -17,6 +17,13 @@ namespace TeixeiraSoftware.Finance
         }
 
         [Fact]
+        public void Money_Is_A_Value_Type()
+        {
+            var money = TenXXX;
+            Assert.False(Object.ReferenceEquals(TenXXX, money));
+        }
+
+        [Fact]
         public void Math_Operators()
         {
             Assert.Equal(20.0m, (TenXXX + TenXXX).Amount);
