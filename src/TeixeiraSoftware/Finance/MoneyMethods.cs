@@ -14,11 +14,15 @@ namespace TeixeiraSoftware.Finance
         /// <summary>Performs equality check</summary>
         /// <param name="obj">Any object</param>
         /// <returns>True or false</returns>
+        /// <exception cref="CurrencyMismatchException">
+        ///     Thrown when the currencies are not the same and the
+        ///     <see cref="StrictEqualityComparisons" /> static property is set to true
+        /// </exception>
         public override bool Equals(object obj)
         {
             if (obj is Money)
             {
-                return ((Money) obj).Equals(this);
+                return this.Equals((Money) obj);
             }
 
             return false;
@@ -27,6 +31,10 @@ namespace TeixeiraSoftware.Finance
         /// <summary>Performs equality check</summary>
         /// <param name="other">A Money instance</param>
         /// <returns>True or false</returns>
+        /// <exception cref="CurrencyMismatchException">
+        ///     Thrown when the currencies are not the same and the
+        ///     <see cref="StrictEqualityComparisons" /> static property is set to true
+        /// </exception>
         public bool Equals(Money other)
         {
             if (StrictEqualityComparisons)
@@ -57,7 +65,7 @@ namespace TeixeiraSoftware.Finance
         }
 
         /// <summary>Performs comparison for sorting and ordering purposes</summary>
-        /// <param name="other">A Money instance</param>
+        /// <param name="other">A <see cref="Money" /> instance</param>
         /// <returns>
         ///     -1 if this current instance is less than the paremeter.
         ///     0 if this current instance have the same amount of money.
@@ -78,17 +86,17 @@ namespace TeixeiraSoftware.Finance
             return -1;
         }
 
-        private static bool AreEquivalent(Money a, Money b)
+        private static bool AreEquivalent(Money left, Money right)
         {
-            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(a, b);
-            return a.Amount == b.Amount;
+            CheckForCurrencyMismatch(left, right);
+            return left.Amount == right.Amount;
         }
 
-        private static void ThrowArgumentExceptionIfCurrenciesAreNotTheSame(Money a, Money b)
+        private static void CheckForCurrencyMismatch(Money left, Money right)
         {
-            if (a.Currency != b.Currency)
+            if (left.Currency != right.Currency)
             {
-                throw new ArgumentException("Currencies must be the same");
+                throw new CurrencyMismatchException(left, right);
             }
         }
     }

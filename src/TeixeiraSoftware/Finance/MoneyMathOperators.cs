@@ -8,9 +8,12 @@ namespace TeixeiraSoftware.Finance
         /// <param name="left">A Money instance</param>
         /// <param name="right">A Money instance</param>
         /// <returns>a new Money instance</returns>
+        /// <exception cref="CurrencyMismatchException">
+        ///     Thrown when the currencies are not the same
+        /// </exception>
         public static Money operator + (Money left, Money right)
         {
-            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(left, right);
+            CheckForCurrencyMismatch(left, right);
             return new Money(left.Amount + right.Amount, left.Currency);
         }
 
@@ -44,9 +47,12 @@ namespace TeixeiraSoftware.Finance
         /// <param name="left">A Money instance</param>
         /// <param name="right">A Money instance</param>
         /// <returns>a new Money instance</returns>
+        /// <exception cref="CurrencyMismatchException">
+        ///     Thrown when the currencies are not the same
+        /// </exception>
         public static Money operator - (Money left, Money right)
         {
-            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(left, right);
+            CheckForCurrencyMismatch(left, right);
             return new Money(left.Amount - right.Amount, left.Currency);
         }
 

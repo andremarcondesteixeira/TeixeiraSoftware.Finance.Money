@@ -33,6 +33,5 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="TeixeiraSoftware.Finance.Currency" Version="1.*" />
-    <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.*" />
   </ItemGroup>
 </Project>

@@ -8,6 +8,10 @@ namespace TeixeiraSoftware.Finance
         /// <param name="left">A Money instance</param>
         /// <param name="right">A Money instance</param>
         /// <returns>True or false</returns>
+        /// <exception cref="CurrencyMismatchException">
+        ///     Thrown when the currencies are not the same and the
+        ///     <see cref="StrictEqualityComparisons" /> static property is set to true
+        /// </exception>
         public static bool operator == (Money left, Money right)
         {
             return left.Equals(right);
@@ -17,6 +21,10 @@ namespace TeixeiraSoftware.Finance
         /// <param name="left">A Money instance</param>
         /// <param name="right">A Money instance</param>
         /// <returns>True or false</returns>
+        /// <exception cref="CurrencyMismatchException">
+        ///     Thrown when the currencies are not the same and the
+        ///     <see cref="StrictEqualityComparisons" /> static property is set to true
+        /// </exception>
         public static bool operator != (Money left, Money right)
         {
             return !(left == right);
@@ -26,9 +34,12 @@ namespace TeixeiraSoftware.Finance
         /// <param name="left">A Money instance</param>
         /// <param name="right">A Money instance</param>
         /// <returns>True or false</returns>
+        /// <exception cref="CurrencyMismatchException">
+        ///     Thrown when the currencies are not the same
+        /// </exception>
         public static bool operator > (Money left, Money right)
         {
-            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(left, right);
+            CheckForCurrencyMismatch(left, right);
             return left.Amount > right.Amount;
         }
 
@@ -36,9 +47,12 @@ namespace TeixeiraSoftware.Finance
         /// <param name="left">A Money instance</param>
         /// <param name="right">A Money instance</param>
         /// <returns>True or false</returns>
+        /// <exception cref="CurrencyMismatchException">
+        ///     Thrown when the currencies are not the same
+        /// </exception>
         public static bool operator < (Money left, Money right)
         {
-            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(left, right);
+            CheckForCurrencyMismatch(left, right);
             return left.Amount < right.Amount;
         }
 
@@ -46,9 +60,12 @@ namespace TeixeiraSoftware.Finance
         /// <param name="left">A Money instance</param>
         /// <param name="right">A Money instance</param>
         /// <returns>True or false</returns>
+        /// <exception cref="CurrencyMismatchException">
+        ///     Thrown when the currencies are not the same
+        /// </exception>
         public static bool operator >= (Money left, Money right)
         {
-            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(left, right);
+            CheckForCurrencyMismatch(left, right);
             return left.Amount >= right.Amount;
         }
 
@@ -56,9 +73,12 @@ namespace TeixeiraSoftware.Finance
         /// <param name="left">A Money instance</param>
         /// <param name="right">A Money instance</param>
         /// <returns>True or false</returns>
+        /// <exception cref="CurrencyMismatchException">
+        ///     Thrown when the currencies are not the same
+        /// </exception>
         public static bool operator <= (Money left, Money right)
         {
-            ThrowArgumentExceptionIfCurrenciesAreNotTheSame(left, right);
+            CheckForCurrencyMismatch(left, right);
             return left.Amount <= right.Amount;
         }
     }

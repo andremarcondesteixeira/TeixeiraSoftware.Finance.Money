@@ -98,50 +98,65 @@ namespace TeixeiraSoftware.Finance
         [Fact]
         public void Cannot_Perform_Math_Operations_If_Currencies_Are_Different()
         {
-            var message = "Currencies must be the same";
+            var exception1 = Assert.Throws<CurrencyMismatchException>(() => TenXXX + TenXTS);
+            Assert.Equal(CurrencyMismatchException.DefaultMessage, exception1.Message);
+            Assert.Equal(exception1.LeftOperand , TenXXX);
+            Assert.Equal(exception1.RightOperand, TenXTS);
 
-            var exception1 = Assert.Throws<ArgumentException>(() => TenXXX + TenXTS);
-            Assert.Equal(message, exception1.Message);
-
-            var exception2 = Assert.Throws<ArgumentException>(() => TenXXX - TenXTS);
-            Assert.Equal(message, exception2.Message);
+            var exception2 = Assert.Throws<CurrencyMismatchException>(() => TenXXX - TenXTS);
+            Assert.Equal(CurrencyMismatchException.DefaultMessage, exception2.Message);
+            Assert.Equal(exception2.LeftOperand, TenXXX);
+            Assert.Equal(exception2.RightOperand, TenXTS);
         }
 
         [Fact]
         public void Cannot_Do_Some_Comparisons_If_Currencies_Are_Different()
         {
-            var message = "Currencies must be the same";
+            var exception1 = Assert.Throws<CurrencyMismatchException>(() => TenXXX > TenXTS);
+            Assert.Equal(CurrencyMismatchException.DefaultMessage, exception1.Message);
+            Assert.Equal(exception1.LeftOperand, TenXXX);
+            Assert.Equal(exception1.RightOperand, TenXTS);
 
-            var exception1 = Assert.Throws<ArgumentException>(() => TenXXX > TenXTS);
-            Assert.Equal(message, exception1.Message);
+            var exception2 = Assert.Throws<CurrencyMismatchException>(() => TenXXX < TenXTS);
+            Assert.Equal(CurrencyMismatchException.DefaultMessage, exception2.Message);
+            Assert.Equal(exception2.LeftOperand, TenXXX);
+            Assert.Equal(exception2.RightOperand, TenXTS);
 
-            var exception2 = Assert.Throws<ArgumentException>(() => TenXXX < TenXTS);
-            Assert.Equal(message, exception2.Message);
+            var exception3 = Assert.Throws<CurrencyMismatchException>(() => TenXXX >= TenXTS);
+            Assert.Equal(CurrencyMismatchException.DefaultMessage, exception3.Message);
+            Assert.Equal(exception3.LeftOperand, TenXXX);
+            Assert.Equal(exception3.RightOperand, TenXTS);
 
-            var exception3 = Assert.Throws<ArgumentException>(() => TenXXX >= TenXTS);
-            Assert.Equal(message, exception3.Message);
-
-            var exception4 = Assert.Throws<ArgumentException>(() => TenXXX <= TenXTS);
-            Assert.Equal(message, exception4.Message);
+            var exception4 = Assert.Throws<CurrencyMismatchException>(() => TenXXX <= TenXTS);
+            Assert.Equal(CurrencyMismatchException.DefaultMessage, exception4.Message);
+            Assert.Equal(exception4.LeftOperand, TenXXX);
+            Assert.Equal(exception4.RightOperand, TenXTS);
         }
 
         [Fact]
-        public void Cannot_Do_Equality_Comparison_If_Currencies_Are_Different_And_StrictEqualityComparisons_Is_True()
+        public void Cannot_Do_Equality_Comparisons_If_Currencies_Are_Different_And_StrictEqualityComparisons_Is_True()
         {
-            var message = "Currencies must be the same";
             Money.StrictEqualityComparisons = true;
 
-            var exception1 = Assert.Throws<ArgumentException>(() => TenXXX == TenXTS);
-            Assert.Equal(message, exception1.Message);
+            var exception1 = Assert.Throws<CurrencyMismatchException>(() => TenXXX == TenXTS);
+            Assert.Equal(CurrencyMismatchException.DefaultMessage, exception1.Message);
+            Assert.Equal(exception1.LeftOperand, TenXXX);
+            Assert.Equal(exception1.RightOperand, TenXTS);
 
-            var exception2 = Assert.Throws<ArgumentException>(() => TenXXX.Equals(TenXTS));
-            Assert.Equal(message, exception2.Message);
+            var exception2 = Assert.Throws<CurrencyMismatchException>(() => TenXXX.Equals(TenXTS));
+            Assert.Equal(CurrencyMismatchException.DefaultMessage, exception2.Message);
+            Assert.Equal(exception2.LeftOperand, TenXXX);
+            Assert.Equal(exception2.RightOperand, TenXTS);
 
-            var exception3 = Assert.Throws<ArgumentException>(() => TenXXX.Equals((object) TenXTS));
-            Assert.Equal(message, exception3.Message);
+            var exception3 = Assert.Throws<CurrencyMismatchException>(() => TenXXX.Equals((object) TenXTS));
+            Assert.Equal(CurrencyMismatchException.DefaultMessage, exception3.Message);
+            Assert.Equal(exception3.LeftOperand, TenXXX);
+            Assert.Equal(exception3.RightOperand, TenXTS);
 
-            var exception4 = Assert.Throws<ArgumentException>(() => TenXXX != TenXTS);
-            Assert.Equal(message, exception4.Message);
+            var exception4 = Assert.Throws<CurrencyMismatchException>(() => TenXXX != TenXTS);
+            Assert.Equal(CurrencyMismatchException.DefaultMessage, exception4.Message);
+            Assert.Equal(exception4.LeftOperand, TenXXX);
+            Assert.Equal(exception4.RightOperand, TenXTS);
         }
 
         [Fact]
