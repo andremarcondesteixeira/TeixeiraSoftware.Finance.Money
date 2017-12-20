@@ -127,8 +127,8 @@ namespace TeixeiraSoftware.Finance
         /// <param name="inner">The inner exception</param>
         public CurrencyMismatchException(
             string message,
-            Money leftOperand,
-            Money rightOperand,
+            Money? leftOperand,
+            Money? rightOperand,
             Exception inner
         ) : base(message, inner)
         {

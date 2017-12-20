@@ -17,6 +17,15 @@ namespace TeixeiraSoftware.Finance
         }
 
         [Fact]
+        public void Money_Can_Be_Instantiated()
+        {
+            var money = new Money(123.45m, Currency.XXX);
+
+            Assert.Equal(money.Amount, 123.45m);
+            Assert.Equal(money.Currency, Currency.XXX);
+        }
+
+        [Fact]
         public void Money_Is_A_Value_Type()
         {
             var money = TenXXX;
