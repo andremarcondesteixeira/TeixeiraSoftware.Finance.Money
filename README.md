@@ -112,6 +112,7 @@ You cannot multiply two `Money` instances, because it would not make much sense.
 ### Comparison operations
 
 The available operators are: `==`, `!=`, `>`, `>=`, `<` and `<=`.
+
 The `.Equals` method is also available.
 
 ``` c#
