@@ -22,12 +22,12 @@ Install-Package TeixeiraSoftware.Finance.Money
 
 .NET CLI:
 ```
-dotnet add package TeixeiraSoftware.Finance.Currency
+dotnet add package TeixeiraSoftware.Finance.Money
 ```
 
 Paket CLI:
 ```
-paket add TeixeiraSoftware.Finance.Currency
+paket add TeixeiraSoftware.Finance.Money
 ```
 
 ## Dependencies
