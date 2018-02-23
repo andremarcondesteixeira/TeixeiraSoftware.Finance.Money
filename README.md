@@ -49,64 +49,65 @@ var aMillionMoneys = new Money(1000000, Currency.ByAlphabeticCode("XXX"));
 ### Math operations:
 
 **`+` operator (addition):**
+
+When doing addition operations, you can sum an instance of `Money` directly to a `decimal` or an `integer`.
+The resulting `Money` instance will have the same currency as the instance used in the addition operation.
 ``` c#
-/*
-When doing addition operations, you can sum an instance of Money directly to a decimal or an integer.
-The resulting Money instance will have the same currency as the instance used in the addition operation.
-*/
 var halfMoney = new Money(0.25m, Currency.XXX) + 0.25m;
 var tenMoneys = 1.5m + new Money(8.5m, Currency.XXX);
 var aHundredMoneys = tenMoneys + 90;
 var aThousandMoneys = 900 + aHundredMoneys;
+```
 
-/*
-And, of course, you can sum two instances of Money as well
-*/
+And, of course, you can sum two instances of `Money` as well:
+
+``` c#
 var moreMoney = aHundredMoneys + aThousandMoneys;
 ```
 
 **`-` operator (subtraction):**
+
+When doing subtraction operations, you can subtract an instance of `Money` directly to a `decimal` or an `integer`.
+The resulting `Money` instance will have the same currency as the instance used in the subtraction operation.
 ``` c#
-/*
-When doing subtraction operations, you can subtract an instance of Money directly to a decimal or an integer.
-The resulting Money instance will have the same currency as the instance used in the subtraction operation.
-*/
 var oneMoney = new Money(2, Currency.XXX) - 1;
 var tenMoneys = 1 - new Money(11, Currency.XXX);
 var nineMoneys = tenMoneys - 1;
 var eightMoneys = 1 - tenMoneys;
+```
 
-/*
-And, of course, you can subtract two instances of Money as well
-*/
+And, of course, you can subtract two instances of `Money` as well:
+``` c#
 var sevenMoneys = eightMoneys - oneMoney;
 ```
 
 **`/` operator (division):**
+
+You can only divide a `Money` instace by a factor, that can be a `decimal` or an `integer`:
+
 ``` c#
 var fiveHundredMoneys = aThousandMoneys / 2;
-
-/*
-You cannot divide two Money instances, like:
-
-    new Money(10, Currency.XXX) / new Money(10, Currency.XXX)
-
-You also cannot divide any number to a Money instance, like:
-
-    2 / new Money(10, Currency.XXX)
-
-Because those kind of operations do not make much sense.
-*/
+var someMoney = new Money(1000.01m, Currency.XXX) / 1.28;
 ```
+You cannot divide two `Money` instances, like:
+``` c#
+new Money(10, Currency.XXX) / new Money(10, Currency.XXX);
+```
+You also cannot divide any number to a `Money` instance, like:
+``` c#
+var money = 2 / new Money(10, Currency.XXX);
+```
+This is because those kind of operations do not make much sense.
+
 
 **`*` operator (multiplication):**
+
+You can only multiply a `Money` instance by a factor, that can be a `decimal` or an `integer`:
 ``` c#
-/*
-You can only multiply a Money instance by a factor, that can be a decimal or an integer
-*/
 var someMoney = aThousandMoneys * 2.5m;
 var aLotOfMoney = 1000 * aThousandMoneys;
 ```
+You cannot multiply two `Money` instances, because it would not make much sense.
 
 ### Comparison operations
 
