@@ -11,7 +11,7 @@ A simple cross platform money struct for .Net based on [Martin Fowler's Money pa
 
 The implementation of this library is compatible with .Net Standard 2.0 (see [https://docs.microsoft.com/en-us/dotnet/standard/net-standard](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) for details).
 
-TeixeiraSoftware.Finance.Money is an immutable value type.
+`TeixeiraSoftware.Finance.Money` is an immutable value type.
 
 ## Installation
 
