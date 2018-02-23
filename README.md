@@ -14,7 +14,6 @@ The implementation of this library is compatible with `.Net Standard 2.0` (see [
 `TeixeiraSoftware.Finance.Money` is an immutable value type.
 
 ## Installation
-
 NuGet Package Manager:
 ```
 Install-Package TeixeiraSoftware.Finance.Money
@@ -31,7 +30,6 @@ paket add TeixeiraSoftware.Finance.Money
 ```
 
 ## Dependencies
-
 This package has no dependencies.
 
 ## Usage
@@ -39,7 +37,6 @@ The `Money` class makes use of an abstract class called `ICurrency` that must be
 There is already an implementation available at nuget using the name [`TeixeiraSoftware.Finance.Currency`](https://www.nuget.org/packages/TeixeiraSoftware.Finance.Currency/), and for the examples in this documentation, the methods used to get `ICurrency` instances will come from that library. If you want, you can implement yourself the `ICurrency` abstract class in order to provide your own functionallity.
 
 The usage is very simple:
-
 ``` c#
 // XXX represents the ISO 4217 code of the currency
 var tenMoneys = new Money(12.3m, Currency.XXX);
@@ -47,9 +44,7 @@ var aMillionMoneys = new Money(1000000, Currency.ByAlphabeticCode("XXX"));
 ```
 
 ### Math operations:
-
 #### `+` operator (addition):
-
 When doing addition operations, you can sum an instance of `Money` directly to a `decimal` or an `integer`.
 The resulting `Money` instance will have the same currency as the instance used in the addition operation.
 ``` c#
@@ -60,15 +55,11 @@ var aThousandMoneys = 900 + aHundredMoneys;
 ```
 
 And, of course, you can sum two instances of `Money` as well:
-
 ``` c#
 var moreMoney = aHundredMoneys + aThousandMoneys;
 ```
 
----
-
 #### `-` operator (subtraction):
-
 When doing subtraction operations, you can subtract an instance of `Money` directly to a `decimal` or an `integer`.
 The resulting `Money` instance will have the same currency as the instance used in the subtraction operation.
 ``` c#
@@ -83,43 +74,38 @@ And, of course, you can subtract two instances of `Money` as well:
 var sevenMoneys = eightMoneys - oneMoney;
 ```
 
----
-
 #### `/` operator (division):
-
 You can only divide a `Money` instace by a factor, that can be a `decimal` or an `integer`:
-
 ``` c#
 var fiveHundredMoneys = aThousandMoneys / 2;
 var someMoney = new Money(1000.01m, Currency.XXX) / 1.28;
 ```
+
 You cannot divide two `Money` instances, like:
 ``` c#
 new Money(10, Currency.XXX) / new Money(10, Currency.XXX);
 ```
+
 You also cannot divide any number to a `Money` instance, like:
 ``` c#
 var money = 2 / new Money(10, Currency.XXX);
 ```
+
 This is because those kind of operations do not make much sense.
 
----
-
 #### `*` operator (multiplication):
-
 You can only multiply a `Money` instance by a factor, that can be a `decimal` or an `integer`:
 ``` c#
 var someMoney = aThousandMoneys * 2.5m;
 var aLotOfMoney = 1000 * aThousandMoneys;
 ```
+
 You cannot multiply two `Money` instances, because it would not make much sense.
 
 ### Comparison operations
-
 The available operators are: `==`, `!=`, `>`, `>=`, `<` and `<=`.
 
 The `.Equals` method is also available.
-
 ``` c#
 var aThousandMoneys = new Money(1000, Currency.XXX);
 var fortyTwoMoneys = new Money(42, Currency.XXX);
@@ -150,10 +136,8 @@ if (twoThousandMoneys > aLotOfMoneys)
 ```
 
 ### Details about operations involving different currencies
-
 You may pay attention when trying to use the operators when the currencies don't match.
 the operators `>`, `>=`, `<` and `<=` will throw a `CurrencyMismatchException` if the currencies are not the same:
-
 ``` c#
 var tenXXX = new Money(10, Currency.XXX);
 var tenXTS = new Money(10, Currency.XTS);
@@ -162,7 +146,6 @@ if (tenXXX > tenXTS) // throws CurrencyMismatchException
 ```
 
 However, you can perform an equality comparison between instances with different currencies, although in this case you will always obtain `false`:
-
 ``` c#
 var tenXXX = new Money(10, Currency.XXX);
 var tenXTS = new Money(10, Currency.XTS);
@@ -180,7 +163,6 @@ if (tenXXX.Equals(tenXTS))
 
 If you don't like this behavior, you can change it by setting the flag `StrictEqualityComparisons` to `true`.
 When doing so, any try to compare the equality between instances with different currencies will result in a `CurrencyMismatchException` being thrown:
-
 ``` c#
 Money.StrictEqualityComparisons = true;
 
