@@ -3,7 +3,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>TeixeiraSoftware.Finance.Money</AssemblyName>
     <Title>TeixeiraSoftware.Finance.Money</Title>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>4.0.1</PackageVersion>
     <AssemblyCompany>Teixeira Software</AssemblyCompany>
     <AssemblyDescription>A simple cross-platform money class-library.</AssemblyDescription>
     <RootNamespace>TeixeiraSoftware</RootNamespace>
@@ -14,14 +14,14 @@
     <Company>Teixeira Software</Company>
     <Description>A simple cross platform money class-library.</Description>
     <Copyright>Teixeira Software</Copyright>
-    <RepositoryUrl>https://github.com/TeixeiraSoftware/Money</RepositoryUrl>
+    <RepositoryUrl>https://github.com/TeixeiraSoftware/TeixeiraSoftware.Finance.Money</RepositoryUrl>
     <PackageTags>money;finance;netstandard</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
-    <Version>1.0.0</Version>
-    <PackageProjectUrl>https://TeixeiraSoftware.github.io/Money</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/TeixeiraSoftware/Money/master/LICENSE</PackageLicenseUrl>
+    <AssemblyVersion>4.0.1.0</AssemblyVersion>
+    <FileVersion>4.0.1.0</FileVersion>
+    <Version>4.0.1</Version>
+    <PackageProjectUrl>https://teixeirasoftware.github.io/TeixeiraSoftware.Finance.Money/</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/TeixeiraSoftware/TeixeiraSoftware.Finance.Money/blob/master/LICENSE</PackageLicenseUrl>
     <PackageReleaseNotes>First stable release.</PackageReleaseNotes>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
