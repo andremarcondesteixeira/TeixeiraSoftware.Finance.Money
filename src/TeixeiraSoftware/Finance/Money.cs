@@ -8,8 +8,8 @@ namespace TeixeiraSoftware.Finance
         /// <summary>The amount of money in the given currency</summary>
         public readonly decimal Amount;
 
-        /// <summary>A <see cref="Currency" /> instance</summary>
-        public readonly Currency Currency;
+        /// <summary>A <see cref="ICurrency" /> instance</summary>
+        public readonly ICurrency Currency;
 
         /// <summary>
         ///     Set this to true if you want the operators == and != to not allow
@@ -22,8 +22,8 @@ namespace TeixeiraSoftware.Finance
 
         /// <summary>AndreMarcondesTeixeira.Money constructor</summary>
         /// <param name="amount">The amount of money in the given currency</param>
-        /// <param name="currency">A <see cref="Currency" /> instance</param>
-        public Money(decimal amount, Currency currency)
+        /// <param name="currency">A <see cref="ICurrency" /> instance</param>
+        public Money(decimal amount, ICurrency currency)
         {
             this.Amount = amount;
             this.Currency = currency;

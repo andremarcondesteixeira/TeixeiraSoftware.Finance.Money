@@ -1,14 +1,20 @@
 using System;
+using System.Collections.Generic;
 
 namespace TeixeiraSoftware.Finance
 {
     public partial struct Money : IComparable, IComparable<Money>, IEquatable<Money>
     {
-        /// <summary>The Hash Code from Object</summary>
-        /// <returns>The Hash Code from Object</returns>
+        /// <summary>Gets the hash code for this object</summary>
+        /// <returns>The generated hash code</returns>
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            var hashCode = -1854965745;
+
+            hashCode = hashCode * -1521134295 + EqualityComparer<decimal>.Default.GetHashCode(Amount);
+            hashCode = hashCode * -1521134295 + EqualityComparer<ICurrency>.Default.GetHashCode(Currency);
+
+            return hashCode;
         }
 
         /// <summary>Performs equality check</summary>
@@ -49,11 +55,11 @@ namespace TeixeiraSoftware.Finance
                 return AreEquivalent(this, other);
             }
 
-            return other.Currency == this.Currency && other.Amount == this.Amount;
+            return other.Currency.Equals(this.Currency) && other.Amount == this.Amount;
         }
 
         /// <summary>Performs comparison for sorting and ordering purposes</summary>
-        /// <param name="obj">Any object</param>
+        /// <param name="other">Any object</param>
         /// <returns>
         ///     -1 if this current instance is less than the paremeter.
         ///     0 if this current instance have the same amount of money.
@@ -62,11 +68,11 @@ namespace TeixeiraSoftware.Finance
         /// <exception cref="CurrencyMismatchException">
         ///     Thrown when the currencies are not the same
         /// </exception>
-        public int CompareTo(object obj)
+        public int CompareTo(object other)
         {
-            if (obj is Money)
+            if (other is Money)
             {
-                return this.CompareTo((Money) obj);
+                return this.CompareTo((Money) other);
             }
 
             throw new ArgumentException(
@@ -107,7 +113,7 @@ namespace TeixeiraSoftware.Finance
 
         private static void CheckForCurrencyMismatch(Money left, Money right)
         {
-            if (left.Currency != right.Currency)
+            if (left.Currency.Equals(right.Currency))
             {
                 throw new CurrencyMismatchException(left, right);
             }
