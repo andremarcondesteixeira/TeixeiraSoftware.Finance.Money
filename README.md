@@ -48,7 +48,7 @@ var aMillionMoneys = new Money(1000000, Currency.ByAlphabeticCode("XXX"));
 
 ### Math operations:
 
-**`+` operator (addition):**
+#### `+` operator (addition):
 
 When doing addition operations, you can sum an instance of `Money` directly to a `decimal` or an `integer`.
 The resulting `Money` instance will have the same currency as the instance used in the addition operation.
@@ -65,7 +65,9 @@ And, of course, you can sum two instances of `Money` as well:
 var moreMoney = aHundredMoneys + aThousandMoneys;
 ```
 
-**`-` operator (subtraction):**
+---
+
+#### `-` operator (subtraction):
 
 When doing subtraction operations, you can subtract an instance of `Money` directly to a `decimal` or an `integer`.
 The resulting `Money` instance will have the same currency as the instance used in the subtraction operation.
@@ -81,7 +83,9 @@ And, of course, you can subtract two instances of `Money` as well:
 var sevenMoneys = eightMoneys - oneMoney;
 ```
 
-**`/` operator (division):**
+---
+
+#### `/` operator (division):
 
 You can only divide a `Money` instace by a factor, that can be a `decimal` or an `integer`:
 
@@ -99,8 +103,9 @@ var money = 2 / new Money(10, Currency.XXX);
 ```
 This is because those kind of operations do not make much sense.
 
+---
 
-**`*` operator (multiplication):**
+#### `*` operator (multiplication):
 
 You can only multiply a `Money` instance by a factor, that can be a `decimal` or an `integer`:
 ``` c#
