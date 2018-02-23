@@ -7,9 +7,9 @@
 [![Pull Requests](https://img.shields.io/badge/Pull%20Requests-Welcome-brightgreen.svg)](https://github.com/TeixeiraSoftware/TeixeiraSoftware.Finance.Money/blob/master/CONTRIBUTING.md)
 [![NuGet](https://img.shields.io/nuget/dt/currency.svg)](https://www.nuget.org/packages/TeixeiraSoftware.Finance.Money/)
 
-A simple cross platform money struct for .Net based on [Martin Fowler's Money pattern](https://martinfowler.com/eaaCatalog/money.html).
+A simple cross platform money `struct` for `.Net` based on [Martin Fowler's Money pattern](https://martinfowler.com/eaaCatalog/money.html).
 
-The implementation of this library is compatible with .Net Standard 2.0 (see [https://docs.microsoft.com/en-us/dotnet/standard/net-standard](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) for details).
+The implementation of this library is compatible with `.Net Standard 2.0` (see [https://docs.microsoft.com/en-us/dotnet/standard/net-standard](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) for details).
 
 `TeixeiraSoftware.Finance.Money` is an immutable value type.
 
