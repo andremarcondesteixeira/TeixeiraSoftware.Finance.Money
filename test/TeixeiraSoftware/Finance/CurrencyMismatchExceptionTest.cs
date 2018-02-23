@@ -10,8 +10,10 @@ namespace TeixeiraSoftware.Finance
 
         public CurrencyMismatchExceptionTest()
         {
-            this.TenXXX = new Money(10, Currency.XXX);
-            this.TenXTS = new Money(10, Currency.XTS);
+            var XXXCurrency = new CurrencyImplementation("XXX", "001", 0, "XXX Test Currency");
+            var XTSCurrency = new CurrencyImplementation("XTS", "002", 0, "XTS Test Currency");
+            this.TenXXX = new Money(10, XXXCurrency);
+            this.TenXTS = new Money(10, XTSCurrency);
         }
 
         [Fact]

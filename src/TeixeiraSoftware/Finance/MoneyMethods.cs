@@ -113,7 +113,7 @@ namespace TeixeiraSoftware.Finance
 
         private static void CheckForCurrencyMismatch(Money left, Money right)
         {
-            if (left.Currency.Equals(right.Currency))
+            if (!left.Currency.Equals(right.Currency))
             {
                 throw new CurrencyMismatchException(left, right);
             }

@@ -24,18 +24,19 @@ namespace TeixeiraSoftware.Finance
         public byte MinorUnits { get; }
 
         /// <summary>
-        /// Gets a currency instance based on its unique alphabetic code
+        /// 
         /// </summary>
         /// <param name="alphabeticCode"></param>
-        /// <returns></returns>
-        public abstract ICurrency ByAlphabeticCode(string alphabeticCode);
-
-        /// <summary>
-        /// Gets a currency instance base on its unique numeric code
-        /// </summary>
         /// <param name="numericCode"></param>
-        /// <returns></returns>
-        public abstract ICurrency ByNumericCode(string numericCode);
+        /// <param name="minorUnits"></param>
+        /// <param name="name"></param>
+        protected ICurrency(string alphabeticCode, string numericCode, byte minorUnits, string name)
+        {
+            this.AlphabeticCode = alphabeticCode;
+            this.NumericCode = numericCode;
+            this.MinorUnits = minorUnits;
+            this.Name = name;
+        }
 
         /// <summary>
         /// Says wheter another currency matches to this one

@@ -8,21 +8,27 @@ namespace TeixeiraSoftware.Finance
     {
         private Money TenXXX;
         private Money TenXTS;
+        private ICurrency XXXCurrency;
+        private ICurrency XTSCurrency;
 
         public MoneyTest()
         {
-            this.TenXXX = new Money(10.0m, Currency.XXX);
-            this.TenXTS = new Money(10.0m, Currency.XTS);
+            XXXCurrency = new CurrencyImplementation("XXX", "001", 0, "XXX Test Currency");
+            XTSCurrency = new CurrencyImplementation("XTS", "002", 0, "XTS Test Currency");
+
+            TenXXX = new Money(10.0m, XXXCurrency);
+            TenXTS = new Money(10.0m, XTSCurrency);
+
             Money.StrictEqualityComparisons = false;
         }
 
         [Fact]
         public void Money_Can_Be_Instantiated()
         {
-            var money = new Money(123.45m, Currency.XXX);
+            var money = new Money(123.45m, XXXCurrency);
 
             Assert.Equal(money.Amount, 123.45m);
-            Assert.Equal(money.Currency, Currency.XXX);
+            Assert.Equal(money.Currency, XXXCurrency);
         }
 
         [Fact]
@@ -51,8 +57,8 @@ namespace TeixeiraSoftware.Finance
         [Fact]
         public void Comparison_Operators()
         {
-            var anotherTenXXX = new Money(10.0m, Currency.XXX);
-            var twentyXXX = new Money(20.0m, Currency.XXX);
+            var anotherTenXXX = new Money(10.0m, XXXCurrency);
+            var twentyXXX = new Money(20.0m, XXXCurrency);
 
             // operator ==
             Assert.True(TenXXX == anotherTenXXX);
@@ -96,7 +102,7 @@ namespace TeixeiraSoftware.Finance
         [Fact]
         public void Unary_Plus_Operator_Keeps_The_Signal()
         {
-            var minusTenXXX = new Money(-10.0m, Currency.XXX);
+            var minusTenXXX = new Money(-10.0m, XXXCurrency);
 
             Assert.Equal(-10.0m, +minusTenXXX.Amount);
             Assert.Equal(10.0m, +TenXXX.Amount);
@@ -105,7 +111,7 @@ namespace TeixeiraSoftware.Finance
         [Fact]
         public void Unary_Minus_Operator_Inverts_The_Signal()
         {
-            var minusTenXXX = new Money(-10.0m, Currency.XXX);
+            var minusTenXXX = new Money(-10.0m, XXXCurrency);
 
             Assert.Equal(10.0m, -minusTenXXX.Amount);
             Assert.Equal(-10.0m, -TenXXX.Amount);
@@ -180,9 +186,9 @@ namespace TeixeiraSoftware.Finance
         {
             var collection = new List<Money>
             {
-                new Money(3, Currency.XXX),
-                new Money(1, Currency.XXX),
-                new Money(2, Currency.XXX)
+                new Money(3, XXXCurrency),
+                new Money(1, XXXCurrency),
+                new Money(2, XXXCurrency)
             };
 
             collection.Sort();
@@ -191,9 +197,9 @@ namespace TeixeiraSoftware.Finance
                 collection,
                 new List<Money>
                 {
-                    new Money(1, Currency.XXX),
-                    new Money(2, Currency.XXX),
-                    new Money(3, Currency.XXX)
+                    new Money(1, XXXCurrency),
+                    new Money(2, XXXCurrency),
+                    new Money(3, XXXCurrency)
                 }
             );
         }
@@ -201,9 +207,9 @@ namespace TeixeiraSoftware.Finance
         [Fact]
         public void Cannot_Sort_Money_Collections_With_Different_Currencies()
         {
-            var money1 = new Money(1, Currency.XTS);
-            var money2 = new Money(2, Currency.XXX);
-            var money3 = new Money(3, Currency.XXX);
+            var money1 = new Money(1, XTSCurrency);
+            var money2 = new Money(2, XXXCurrency);
+            var money3 = new Money(3, XXXCurrency);
 
             var collection = new List<Money>
             {
