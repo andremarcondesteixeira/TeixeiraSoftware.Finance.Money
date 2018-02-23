@@ -43,39 +43,72 @@ The usage is very simple:
 ``` c#
 // XXX represents the ISO 4217 code of the currency
 var tenMoneys = new Money(12.3m, Currency.XXX);
-var aMillionMoneys = new Money(1000000, Currency.GetByLetterCode("XXX"));
+var aMillionMoneys = new Money(1000000, Currency.ByAlphabeticCode("XXX"));
 ```
 
 ### Math operations:
 
+
 ``` c#
 // operator +
+
+/*
+When doing addition operations, you can sum an instance of Money directly to a decimal or an integer.
+The resulting Money instance will have the same currency as the instance used in the addition operation.
+*/
 var halfMoney = new Money(0.25m, Currency.XXX) + 0.25m;
 var tenMoneys = 1.5m + new Money(8.5m, Currency.XXX);
 var aHundredMoneys = tenMoneys + 90;
 var aThousandMoneys = 900 + aHundredMoneys;
+
+/*
+And, of course, you can sum two instances of Money as well
+*/
 var moreMoney = aHundredMoneys + aThousandMoneys;
 
 // operator -
+/*
+When doing subtraction operations, you can subtract an instance of Money directly to a decimal or an integer.
+The resulting Money instance will have the same currency as the instance used in the subtraction operation.
+*/
 var oneMoney = new Money(2, Currency.XXX) - 1;
 var tenMoneys = 1 - new Money(11, Currency.XXX);
 var nineMoneys = tenMoneys - 1;
 var eightMoneys = 1 - tenMoneys;
+
+/*
+And, of course, you can subtract two instances of Money as well
+*/
 var sevenMoneys = eightMoneys - oneMoney;
 
 // operator /
 var fiveHundredMoneys = aThousandMoneys / 2;
-// you cannot divide any number to a Money instance, like
-// `2 / new Money(10, Currency.XXX)`, because it makes no sense at all
+
+/*
+You cannot divide two Money instances, like:
+
+    new Money(10, Currency.XXX) / new Money(10, Currency.XXX)
+
+You also cannot divide any number to a Money instance, like:
+
+    2 / new Money(10, Currency.XXX)
+
+Because those kind of operations do not make much sense.
+*/
 
 // operator *
-var twoThousandMoneys = aThousandMoneys * 2;
+
+/*
+You can only multiply a Money instance by a factor, that can be a decimal or an integer
+*/
+var someMoney = aThousandMoneys * 2.5m;
 var aLotOfMoney = 1000 * aThousandMoneys;
 ```
 
 ### Comparison operations
 
-The available operators are: `==`, `!=`, `>`, `>=`, `<` and `<=`. And the `.Equals` method is also available.
+The available operators are: `==`, `!=`, `>`, `>=`, `<` and `<=`.
+The `.Equals` method is also available.
 
 ``` c#
 var aThousandMoneys = new Money(1000, Currency.XXX);
