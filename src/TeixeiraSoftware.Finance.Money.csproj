@@ -31,7 +31,4 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>bin\Release\netstandard2.0\TeixeiraSoftware.Finance.Money.xml</DocumentationFile>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="TeixeiraSoftware.Finance.Currency" Version="1.*" />
-  </ItemGroup>
 </Project>
