@@ -3,8 +3,8 @@ using System;
 namespace TeixeiraSoftware.Finance
 {
     /// <summary>
-    ///     Exception thrown when a math or a comparison operation is done with
-    ///     Money instances involving different currencies
+    ///     Exception thrown when a math or comparison operation is done with
+    ///     <see cref="Money" /> instances involving different currencies
     /// </summary>
     public class CurrencyMismatchException : Exception
     {

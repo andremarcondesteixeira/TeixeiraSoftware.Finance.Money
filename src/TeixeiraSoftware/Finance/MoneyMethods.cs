@@ -22,7 +22,7 @@ namespace TeixeiraSoftware.Finance
         /// <returns>True or false</returns>
         /// <exception cref="CurrencyMismatchException">
         ///     Thrown when the currencies are not the same and the
-        ///     <see cref="StrictEqualityComparisons" /> static property is set to true
+        ///     <see cref="StrictEqualityComparisons" /> flag is set to true
         /// </exception>
         public override bool Equals(object obj)
         {
@@ -33,9 +33,7 @@ namespace TeixeiraSoftware.Finance
 
             if (StrictEqualityComparisons)
             {
-                throw new ArgumentException(
-                    "A Money instance can only be compared against another Money instance"
-                );
+                throw new ArgumentException(TypeMismatchErrorMessage);
             }
 
             return false;
@@ -46,7 +44,7 @@ namespace TeixeiraSoftware.Finance
         /// <returns>True or false</returns>
         /// <exception cref="CurrencyMismatchException">
         ///     Thrown when the currencies are not the same and the
-        ///     <see cref="StrictEqualityComparisons" /> static property is set to true
+        ///     <see cref="StrictEqualityComparisons" /> flag is set to true
         /// </exception>
         public bool Equals(Money other)
         {
@@ -75,9 +73,7 @@ namespace TeixeiraSoftware.Finance
                 return this.CompareTo((Money) other);
             }
 
-            throw new ArgumentException(
-                "A Money instance can only be compared against another Money instance"
-            );
+            throw new ArgumentException(TypeMismatchErrorMessage);
         }
 
         /// <summary>Performs comparison for sorting and ordering purposes</summary>
