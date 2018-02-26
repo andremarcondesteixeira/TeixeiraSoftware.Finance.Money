@@ -8,8 +8,6 @@ Update documentation:
     - ICurrency interface
 
 Update Unit Tests:
-    - Money.Equals(obj object) : "A Money instance can only be compared against another Money instance"
-    - Money.CompareTo(obj object) : "A Money instance can only be compared against another Money instance"
     - MoneyComparer
 
 Create code coverage reports
