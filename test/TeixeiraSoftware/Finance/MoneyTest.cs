@@ -156,6 +156,14 @@ namespace TeixeiraSoftware.Finance
         }
 
         [Fact]
+        public void Cannot_Compare_Money_Instance_Agains_Other_Types_Than_Money_When_StrictEqualityComparisons_Is_True()
+        {
+            Money.StrictEqualityComparisons = true;
+            var exception = Assert.Throws<ArgumentException>(() => TenXXX.Equals(new Object()));
+            Assert.Equal(Money.TypeMismatchErrorMessage, exception.Message);
+        }
+
+        [Fact]
         public void Cannot_Do_Equality_Comparisons_If_Currencies_Are_Different_And_StrictEqualityComparisons_Is_True()
         {
             Money.StrictEqualityComparisons = true;
@@ -222,6 +230,23 @@ namespace TeixeiraSoftware.Finance
             Assert.Equal(CurrencyMismatchException.DefaultMessage, exception.InnerException.Message);
             Assert.Equal(((CurrencyMismatchException) exception.InnerException).LeftOperand, money3);
             Assert.Equal(((CurrencyMismatchException) exception.InnerException).RightOperand, money1);
+        }
+
+        [Fact]
+        public void Cannot_Sort_Money_Collections_With_Other_Types_Than_Money()
+        {
+            var money = new Money(1, XTSCurrency);
+            var someObject = new Object();
+
+            var collection = new List<Object>
+            {
+                money,
+                someObject
+            };
+
+            var exception = Assert.Throws<InvalidOperationException>(() => collection.Sort());
+            Assert.IsType<ArgumentException>(exception.InnerException);
+            Assert.Equal(Money.TypeMismatchErrorMessage, exception.InnerException.Message);
         }
     }
 }
