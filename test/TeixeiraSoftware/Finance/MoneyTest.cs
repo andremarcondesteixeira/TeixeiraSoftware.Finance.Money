@@ -6,10 +6,10 @@ namespace TeixeiraSoftware.Finance
 {
     public class MoneyTest
     {
-        private Money TenUSD;
-        private Money TenEUR;
         private ICurrency USD;
         private ICurrency EUR;
+        private Money TenUSD;
+        private Money TenEUR;
 
         public MoneyTest()
         {

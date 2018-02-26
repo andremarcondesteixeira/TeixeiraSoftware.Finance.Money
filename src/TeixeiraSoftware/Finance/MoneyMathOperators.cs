@@ -79,7 +79,7 @@ namespace TeixeiraSoftware.Finance
         /// <returns>a new Money instance</returns>
         public static Money operator - (Money money)
         {
-            return new Money(money.Amount * (-1), money.Currency);
+            return money * (-1);
         }
 
         /// <summary>Multiplication operator</summary>

@@ -10,9 +10,11 @@ namespace TeixeiraSoftware.Finance
         public override int GetHashCode()
         {
             var hashCode = -1854965745;
+            var amountHashCode = EqualityComparer<decimal>.Default.GetHashCode(Amount);
+            var currencyHashCode = EqualityComparer<ICurrency>.Default.GetHashCode(Currency);
 
-            hashCode = hashCode * -1521134295 + EqualityComparer<decimal>.Default.GetHashCode(Amount);
-            hashCode = hashCode * -1521134295 + EqualityComparer<ICurrency>.Default.GetHashCode(Currency);
+            hashCode = hashCode * -1521134295 + amountHashCode;
+            hashCode = hashCode * -1521134295 + currencyHashCode;
 
             return hashCode;
         }

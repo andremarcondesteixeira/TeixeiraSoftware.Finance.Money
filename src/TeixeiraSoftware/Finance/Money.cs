@@ -21,8 +21,8 @@ namespace TeixeiraSoftware.Finance
         public static bool StrictEqualityComparisons { get; set; } = false;
 
         /// <summary>
-        /// Error message for when a <see cref="Money" /> instace is compared against an object of
-        /// another type
+        ///     Error message for when a <see cref="Money" /> instace is compared against
+        ///     an object of another type
         /// </summary>
         public static string TypeMismatchErrorMessage =
             "A Money instance can only be compared against another Money instance";
