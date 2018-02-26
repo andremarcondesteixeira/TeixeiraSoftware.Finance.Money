@@ -7,17 +7,8 @@ namespace TeixeiraSoftware.Finance
     /// </summary>
     public interface ICurrency : IEquatable<ICurrency>
     {
-        /// <summary>The ISO name of the currency</summary>
-        string Name { get; }
-
-        /// <summary>The alphabetic ISO code of the currency</summary>
-        string AlphabeticCode { get; }
-
-        /// <summary>The numeric ISO code of the currency</summary>
-        string NumericCode { get; }
-
-        /// <summary>The ISO minor units of the currency</summary>
-        byte MinorUnits { get; }
+        /// <summary>The symbol that uniquely identifies the currency</summary>
+        string Symbol { get; }
 
         /// <summary>
         /// Says wheter another currency matches to this one

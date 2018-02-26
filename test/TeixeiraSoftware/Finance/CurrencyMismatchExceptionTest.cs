@@ -5,15 +5,16 @@ namespace TeixeiraSoftware.Finance
 {
     public class CurrencyMismatchExceptionTest
     {
-        private Money TenXXX;
-        private Money TenXTS;
+        private Money TenUSD;
+        private Money TenEUR;
 
         public CurrencyMismatchExceptionTest()
         {
-            var XXXCurrency = new CurrencyImplementation("XXX", "001", 0, "XXX Test Currency");
-            var XTSCurrency = new CurrencyImplementation("XTS", "002", 0, "XTS Test Currency");
-            this.TenXXX = new Money(10, XXXCurrency);
-            this.TenXTS = new Money(10, XTSCurrency);
+            var USD = new CurrencyImplementation("USD");
+            var EUR = new CurrencyImplementation("EUR");
+
+            this.TenUSD = new Money(10, USD);
+            this.TenEUR = new Money(10, EUR);
         }
 
         [Fact]
@@ -42,13 +43,13 @@ namespace TeixeiraSoftware.Finance
         public void Test_Constructor_Money_Money()
         {
             var exception = new CurrencyMismatchException(
-                this.TenXXX,
-                this.TenXTS
+                this.TenUSD,
+                this.TenEUR
             );
 
             Assert.Equal(exception.Message, CurrencyMismatchException.DefaultMessage);
-            Assert.Equal(exception.LeftOperand, this.TenXXX);
-            Assert.Equal(exception.RightOperand, this.TenXTS);
+            Assert.Equal(exception.LeftOperand, this.TenUSD);
+            Assert.Equal(exception.RightOperand, this.TenEUR);
             Assert.Null(exception.InnerException);
         }
 
@@ -68,13 +69,13 @@ namespace TeixeiraSoftware.Finance
         {
             var exception = new CurrencyMismatchException(
                 "test",
-                this.TenXXX,
-                this.TenXTS
+                this.TenUSD,
+                this.TenEUR
             );
 
             Assert.Equal(exception.Message, "test");
-            Assert.Equal(exception.LeftOperand, this.TenXXX);
-            Assert.Equal(exception.RightOperand, this.TenXTS);
+            Assert.Equal(exception.LeftOperand, this.TenUSD);
+            Assert.Equal(exception.RightOperand, this.TenEUR);
             Assert.Null(exception.InnerException);
         }
 
@@ -96,14 +97,14 @@ namespace TeixeiraSoftware.Finance
         public void Test_Constructor_Money_Money_Exception()
         {
             var exception = new CurrencyMismatchException(
-                this.TenXXX,
-                this.TenXTS,
+                this.TenUSD,
+                this.TenEUR,
                 new Exception("inner")
             );
 
             Assert.Equal(exception.Message, CurrencyMismatchException.DefaultMessage);
-            Assert.Equal(exception.LeftOperand, this.TenXXX);
-            Assert.Equal(exception.RightOperand, this.TenXTS);
+            Assert.Equal(exception.LeftOperand, this.TenUSD);
+            Assert.Equal(exception.RightOperand, this.TenEUR);
             Assert.Equal(exception.InnerException.Message, "inner");
         }
 
@@ -112,14 +113,14 @@ namespace TeixeiraSoftware.Finance
         {
             var exception = new CurrencyMismatchException(
                 "test",
-                this.TenXXX,
-                this.TenXTS,
+                this.TenUSD,
+                this.TenEUR,
                 new Exception("inner")
             );
 
             Assert.Equal(exception.Message, "test");
-            Assert.Equal(exception.LeftOperand, this.TenXXX);
-            Assert.Equal(exception.RightOperand, this.TenXTS);
+            Assert.Equal(exception.LeftOperand, this.TenUSD);
+            Assert.Equal(exception.RightOperand, this.TenEUR);
             Assert.Equal(exception.InnerException.Message, "inner");
         }
     }

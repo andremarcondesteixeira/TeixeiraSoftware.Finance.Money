@@ -2,27 +2,16 @@
 {
     internal struct CurrencyImplementation : ICurrency
     {
-        public string Name { get; }
-        public string AlphabeticCode { get; }
-        public string NumericCode { get; }
-        public byte MinorUnits { get; }
+        public string Symbol { get; }
 
-        public CurrencyImplementation(
-            string alphabeticCode,
-            string numericCode,
-            byte minorUnits,
-            string name
-        )
+        public CurrencyImplementation(string symbol)
         {
-            this.AlphabeticCode = alphabeticCode;
-            this.NumericCode = numericCode;
-            this.MinorUnits = minorUnits;
-            this.Name = name;
+            this.Symbol = symbol;
         }
 
         public bool Equals(ICurrency other)
         {
-            return this.AlphabeticCode == other.AlphabeticCode;
+            return this.Symbol == other.Symbol;
         }
     }
 }
