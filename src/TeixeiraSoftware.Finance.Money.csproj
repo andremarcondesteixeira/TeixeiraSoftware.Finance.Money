@@ -3,26 +3,26 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>TeixeiraSoftware.Finance.Money</AssemblyName>
     <Title>TeixeiraSoftware.Finance.Money</Title>
-    <PackageVersion>4.0.2</PackageVersion>
+    <PackageVersion>5.0.0</PackageVersion>
     <AssemblyCompany>Teixeira Software</AssemblyCompany>
-    <AssemblyDescription>A simple cross-platform money class-library.</AssemblyDescription>
+    <AssemblyDescription>A simple cross-platform money struct based on Martin Fowlers's Money pattern.</AssemblyDescription>
     <RootNamespace>TeixeiraSoftware</RootNamespace>
     <ApplicationIcon />
     <Win32Resource />
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>andremteixeira</Authors>
     <Company>Teixeira Software</Company>
-    <Description>A simple cross platform money class-library.</Description>
+    <Description>A simple cross-platform money struct based on Martin Fowlers's Money pattern</Description>
     <Copyright>Teixeira Software</Copyright>
     <RepositoryUrl>https://github.com/TeixeiraSoftware/TeixeiraSoftware.Finance.Money</RepositoryUrl>
     <PackageTags>money;finance;netstandard</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
-    <AssemblyVersion>4.0.2.0</AssemblyVersion>
-    <FileVersion>4.0.2.0</FileVersion>
-    <Version>4.0.2</Version>
+    <AssemblyVersion>5.0.0.0</AssemblyVersion>
+    <FileVersion>5.0.0.0</FileVersion>
+    <Version>5.0.0</Version>
     <PackageProjectUrl>https://teixeirasoftware.github.io/TeixeiraSoftware.Finance.Money/</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/TeixeiraSoftware/TeixeiraSoftware.Finance.Money/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageReleaseNotes>First stable release.</PackageReleaseNotes>
+    <PackageReleaseNotes>This version turns ICurrency into a real interface.</PackageReleaseNotes>
     <PackageIconUrl>https://github.com/TeixeiraSoftware/assets/raw/master/logo_small.png</PackageIconUrl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

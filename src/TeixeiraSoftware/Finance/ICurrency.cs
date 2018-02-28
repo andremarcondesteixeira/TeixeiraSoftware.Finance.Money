@@ -3,7 +3,7 @@
 namespace TeixeiraSoftware.Finance
 {
     /// <summary>
-    /// The <see cref="ICurrency" interface defines a boundary, so that
+    /// The <see cref="ICurrency" /> interface defines a boundary, so that
     /// <see cref="Money" /> has no external dependencies
     /// </summary>
     public interface ICurrency : IEquatable<ICurrency>
