@@ -33,7 +33,7 @@ This package has no dependencies.
 
 ## Usage
 The `Money` class makes use of an abstract class called `ICurrency` that must be implemented in order to use this library.
-There is already an implementation available at nuget using the name [`TeixeiraSoftware.Finance.Currency`](https://www.nuget.org/packages/TeixeiraSoftware.Finance.Currency/), and for the examples in this documentation, the methods used to get `ICurrency` instances will come from that library. If you want, you can implement yourself the `ICurrency` abstract class in order to provide your own functionallity.
+There is already an implementation available at nuget using the name [`TeixeiraSoftware.Finance.Currency`](https://www.nuget.org/packages/TeixeiraSoftware.Finance.Currency/), and for the examples in this documentation, the methods used to get `ICurrency` instances will come from that library. If you want, you can implement yourself the `ICurrency` abstract class in order to provide your own functionallity (The `ICurrency` abstract class is part of [`TeixeiraSoftware.Finance.Money`](https://www.nuget.org/packages/TeixeiraSoftware.Finance.Money/) and you can optionally use the implementation provided by [`TeixeiraSoftware.Finance.Currency`](https://www.nuget.org/packages/TeixeiraSoftware.Finance.Currency/)).
 
 The usage is very simple:
 ``` c#
@@ -77,16 +77,18 @@ var sevenMoneys = eightMoneys - oneMoney;
 You can only divide a `Money` instace by a factor, that can be a `decimal` or an `integer`:
 ``` c#
 var fiveHundredMoneys = aThousandMoneys / 2;
-var someMoney = new Money(1000.01m, Currency.XXX) / 1.28;
+var someMoney = new Money(1000.01m, Currency.XXX) / 1.28m;
 ```
 
 You cannot divide two `Money` instances, like:
 ``` c#
+// This will result in a compile time error
 new Money(10, Currency.XXX) / new Money(10, Currency.XXX);
 ```
 
 You also cannot divide any number to a `Money` instance, like:
 ``` c#
+// This will result in a compile time error
 var money = 2 / new Money(10, Currency.XXX);
 ```
 
@@ -99,7 +101,11 @@ var someMoney = aThousandMoneys * 2.5m;
 var aLotOfMoney = 1000 * aThousandMoneys;
 ```
 
-You cannot multiply two `Money` instances, because it would not make much sense.
+You cannot multiply two `Money` instances, because it would not make much sense:
+``` c#
+// This will result in a compile time error
+var money = new Money(2, Currency.XXX) * new Money(10, Currency.XXX);
+```
 
 ### Comparison operations
 The available operators are: `==`, `!=`, `>`, `>=`, `<` and `<=`.
