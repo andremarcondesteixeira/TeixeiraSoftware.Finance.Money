@@ -24,7 +24,7 @@ namespace TeixeiraSoftware.Finance
         ///     Error message for when a <see cref="Money" /> instace is compared against
         ///     an object of another type
         /// </summary>
-        public static string TypeMismatchErrorMessage =
+        public static readonly string TypeMismatchErrorMessage =
             "A Money instance can only be compared against another Money instance";
 
         /// <summary><see cref="Money" /> constructor</summary>
